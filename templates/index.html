@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav role="navigation">
+        <div class="sec1">
+          <div class="logo">MyWebsite</div>
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchFunction()" aria-label="Search recipes"/>
+            <button type="submit" aria-label="Search button">Search</button>
+          </div>
+          <ul id="login">
+            <li><a href="#Log_In">Log In</a></li>
+            <li><a href="#Magazines">Magazines</a></li>
+          </ul>
+        </div>
+        <hr />
+        <div class="sec2">
+          <ul class="nav-links">
+            <li><a href="#Dinners">Dinners</a></li>
+            <li><a href="#Meals">Meals</a></li>
+            <li><a href="#Ingredients">Ingredients</a></li>
+            <li><a href="#Occasions">Occasions</a></li>
+            <li><a href="#Cuisines">Cuisines</a></li>
+            <li><a href="#News">News</a></li>
+            <li><a href="#About_Us">About Us</a></li>
+          </ul>
+          <div class="burger" aria-label="Menu toggle">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </div>
+</nav>
+<div class="hero">
+    <div class="recipes">
+        <h2>All Recipes</h2>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <h3>{{ recipe.name }}</h3><a class="view" href="{{ url_for('view_recipe', recipe_id=recipe.id) }}">View Recipe</a>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="add">
+        <!-- Add Recipe Form -->
+        <h1>Add a New Recipe</h1>
+    <form action="/" method="POST">
+        <input type="hidden" name="action" value="add">
+        <input type="text" name="name" placeholder="Recipe Name" required>
+        <input type="text" name="ingredients" placeholder="Ingredients (comma-separated)" required>
+        <textarea name="instructions" placeholder="Instructions" required></textarea>
+        <button type="submit">Add Recipe</button>
+    </form>
+    </div>
+</div>
+    
+    
+</body>
+</html>

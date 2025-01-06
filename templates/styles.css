@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* transition: all 2s ease; */
+}
+
+:root {
+  --primary-color: #fefae0;
+  --secondary-color: #fdf5e6;
+  --accent-color: #d4a373;
+  --text-light: #000000;
+  --text-dark: #333333;
+  --transition: 0.3s ease;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 1rem;
+  gap: 0.4rem;
+}
+ul {
+  list-style: none;
+}
+hr {
+  height: 1px;
+  background-color: #d4a373;
+  border: none;
+  align-self: center;
+  width: 90%;
+}
+nav .sec1,
+nav .sec2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sec1 {
+  justify-content: center;
+  align-self: center;
+  gap: 9rem;
+}
+.sec2 {
+  align-self: center;
+}
+.logo {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 750;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#searchInput {
+  width: 250px;
+  padding: 0.5rem;
+  border: 1px solid var(--text-dark);
+  border-radius: 5px;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+button:hover {
+  background-color: #ff7855;
+}
+
+.nav-links,
+#login {
+  display: flex;
+  gap: 1rem;
+}
+.nav-links {
+  gap: 2rem;
+}
+
+.nav-links a,
+#login a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger div {
+  background-color: var(--text-light);
+  height: 3px;
+  margin: 0.3rem 0;
+  transition: transform var(--transition);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    z-index: 1000;
+    transition: transform var(--transition);
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+  #login {
+    display: none;
+  }
+}
+
+/* ---------------- */
+.recipes {
+  width: 49%;
+  background-color: #e9edc9;
+  display: block;
+  color: #d4a373;
+  color: #333333;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  height: auto;
+  align-self: start;
+  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
+  button {
+    margin-top: 0.2rem;
+  }
+  h3{
+    display: inline;
+    align-self: flex-end;
+  }
+  .view{
+    float: right;
+  }
+}
+.hero {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  /* color: wheat; */
+  color: black;
+  margin-top: 2rem;
+}
+.add{
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+    /* background: red; */
+    h1 {
+        margin: 0rem 1rem;
+        color: #333333;
+      }
+    input {
+        height: 2rem;
+        border-radius: 0.4rem;
+        border: 1px solid #ccd5ae;
+        font-family: "Nunito", sans-serif;
+        padding: 0.5rem;
+      }
+      textarea {
+        height: 2rem;
+        border-radius: 0.4rem;
+        border: 1px solid #ccd5ae;
+        font-family: "Nunito", sans-serif;
+        padding: 0.5rem;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        gap: 0.6rem;
+        button {
+          margin-top: 0.6rem;
+          width: 6.6rem;
+          height: 2rem;
+        }
+      } 
+      .delete{
+        margin-top: 0;
+      }
+}
+.back{
+  margin-left: 7.6vw;
+}

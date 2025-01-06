@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.name }} - Recipe Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav role="navigation">
+        <div class="sec1">
+          <div class="logo">MyWebsite</div>
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchFunction()" aria-label="Search recipes"/>
+            <button type="submit" aria-label="Search button">Search</button>
+          </div>
+          <ul id="login">
+            <li><a href="#Log_In">Log In</a></li>
+            <li><a href="#Magazines">Magazines</a></li>
+          </ul>
+        </div>
+        <hr />
+        <div class="sec2">
+          <ul class="nav-links">
+            <li><a href="#Dinners">Dinners</a></li>
+            <li><a href="#Meals">Meals</a></li>
+            <li><a href="#Ingredients">Ingredients</a></li>
+            <li><a href="#Occasions">Occasions</a></li>
+            <li><a href="#Cuisines">Cuisines</a></li>
+            <li><a href="#News">News</a></li>
+            <li><a href="#About_Us">About Us</a></li>
+          </ul>
+          <div class="burger" aria-label="Menu toggle">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </div>
+</nav>
+    <div class="hero">
+        <div class="recipes">
+            <h1>{{ recipe.name }}</h1>
+
+    <!-- Recipe Details -->
+    <h2>Ingredients:</h2>
+    <ul>
+        {% for ingredient in recipe.ingredients %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Instructions:</h2>
+    <p>{{ recipe.instructions }}</p>
+        </div>
+        <div class="add">
+            <!-- Edit Form -->
+    <h1>Edit Recipe</h1>
+    <form action="/edit" method="POST">
+        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+        <input type="text" name="name" value="{{ recipe.name }}" required>
+        <input type="text" name="ingredients" value="{{ recipe.ingredients | join(', ') }}" required>
+        <textarea name="instructions" required>{{ recipe.instructions }}</textarea>
+        <button type="submit">Save</button>
+    </form>
+            <!-- Delete Form -->
+    <h1>Delete Recipe</h1>
+    <form class="delete" action="/delete" method="POST">
+        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+        <button  type="submit">Delete</button>
+    </form>
+        </div>
+    
+</div>
+<a class="back" href="{{ url_for('home') }}">Back to All Recipes</a>
+</body>
+</html>
